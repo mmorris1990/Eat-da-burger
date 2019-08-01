@@ -1,3 +1,6 @@
+// ----- BURGER OBJECT THAT CALLS THE ORM METHODS USING APP SPECIFIC INPUT -----
+
+// Dependencies
 var orm = require("../config/orm.js");
 
 // Create the burger object
@@ -26,4 +29,5 @@ var burger = {
     }
 };
 
+// Exports the burger object for controller use
 module.exports = burger;

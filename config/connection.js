@@ -1,3 +1,5 @@
+// ----- CREATE CONNECTION TO MYSQL DATABASE -----
+
 // Dependencies
 require("dotenv").config();
 var mysql = require("mysql");
@@ -20,4 +22,5 @@ connection.connect(function(err) {
   console.log("connected as id " + connection.threadId);
 });
 
+// Export connection for ORM use
 module.exports = connection;

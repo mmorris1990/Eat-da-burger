@@ -1,3 +1,6 @@
+// ----- DECLARES METHODS FOR EXECUTING MYSQL COMMANDS FOR CRUD ROUTES -----
+
+// Dependencies
 var connection = require("./connection.js");
 
 // Helper function for SQL syntax. Loops through and creates an array of question marks and turns it into a string.
@@ -35,7 +38,7 @@ function objToSql(ob) {
 };
 
 var orm = {
-    // Route to select all burger data 
+    // Method to select all burger data 
     selectAll: function (tableInput, cb) {
         // Construct the query string that returns all rows from the target table
         var queryString = "SELECT * FROM " + tableInput + ";";
@@ -51,7 +54,7 @@ var orm = {
         });
     },
 
-    // Route to add a burger
+    // Method to add a burger
     insertOne: function (table, cols, vals, cb) {
         // Construct the query string that inserts a single row into the target table
         var queryString = "INSERT INTO " + table + " (" + cols.toString() + ") " + "VALUES (" + printQuestionMarks(vals.length) + ") ";
@@ -69,7 +72,7 @@ var orm = {
         });
     },
 
-    // Route to change burger from left to right
+    // Method to change burger from left to right
     updateOne: function (table, objColVals, condition, cb) {
         // Construct the query string that updates a single entry in the target table
         var queryString = "UPDATE " + table + " SET" + objToSql(objColVals) + " WHERE " + condition;
@@ -88,4 +91,5 @@ var orm = {
     }
 };
 
+// Export the orm object for model use
 module.exports = orm;
